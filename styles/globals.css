@@ -1,0 +1,112 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #ffffff;
+  --bg2: #fafafa;
+  --bg3: #f3f4f6;
+  --bg4: #e5e7eb;
+  --border: #dbdbdb;
+  --border2: #e5e7eb;
+  --text: #0f0f0f;
+  --text2: #737373;
+  --text3: #a8a8a8;
+  --accent: #0095f6;
+  --accent-hover: #1877f2;
+  --accent2: #0095f6;
+  --green: #00ba7c;
+  --red: #ed4956;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 18px;
+  --transition: 0.18s cubic-bezier(0.25,0.1,0.25,1);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+input, textarea { font-family: inherit; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-fade-up { animation: fadeUp 0.4s ease forwards; }
+.animate-fade-in { animation: fadeIn 0.3s ease forwards; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--text);
+  color: var(--bg);
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  z-index: 9999;
+  animation: fadeUp 0.3s ease;
+  box-shadow: var(--shadow-lg);
+  font-size: 14px;
+  font-weight: 500;
+}
+.toast.error { background: var(--red); color: white; }
+.toast.success { background: var(--green); color: white; }
+
+/* ReAuth button (white style) */
+.reauth-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: all 0.25s ease-in-out;
+  font-family: inherit;
+}
+.reauth-icon { width: 32px; height: 32px; object-fit: contain; }
+.reauth-btn:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transform: translateY(-3px);
+}
+.reauth-btn:active { transform: translateY(0); box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
